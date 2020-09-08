@@ -23,3 +23,26 @@ def score():
         })
     return False
 
+@app.route('/finalScore', methods=["GET","POST"])
+def finalScore():
+    if request.method == "POST":
+        subscription_key = "key"
+        endpoint = "endpoint"
+        sentiment_url = endpoint + "/text/analytics/v3.0/sentiment"
+        documents = {"documents": [
+        {"id": "1", "language": "en",
+        "text": request.form['content']},]}
+        headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+        response = requests.post(sentiment_url, headers=headers, json=documents)
+        sentiments = response.json()
+        sentiment_overall = sentiments['documents'][0]['sentiment']
+        confidences = sentiments['documents'][0]['confidenceScores']
+        return jsonify({
+            'sentiment': sentiment_overall,
+            'confidences': confidences
+        })
+    return ""
+
+
+
+
