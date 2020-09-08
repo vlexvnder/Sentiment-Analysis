@@ -8,5 +8,7 @@ The sentiment of a message is estimated as you type by using the Senticnet5 data
 However, Senticnet5 is limited because it does not understand context, merely individual words and phrases. So, a better solution is currently being implemented: Azure SentimentAPI. Users will be able to submit their message for analysis (this cannot be conducted in real time because it would rapidly max out allowable API calls to Azure). Particularly positive and negative words will be noted so the user can understand where their score is coming from.
 
 Main.py: the backend of the website, built on Flask
+
 Analyze.py: Sentiment analysis functions
+
 Senticnet5.py: The Senticnet database stored as a python dictionary
