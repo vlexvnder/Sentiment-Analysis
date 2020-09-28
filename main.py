@@ -2,6 +2,7 @@ from flask import Flask, session, render_template, jsonify, request
 from Analyze import score as score_text
 from base64 import b64decode as b64d
 import requests as r
+from Utils/sentiment import Sentiment
 app = Flask(__name__)
 
 app.secret_key = b'_5#y2gyhsghyttryrthgfjkjutrtqtregdfgdL"F4Q8z\n\asdasdasdas]/'
@@ -44,7 +45,7 @@ def finalScore():
         sentiments = response.json()
         session['text'] = text
         session['last_response'] = sentiments
-        return jsonify(sentiments)
+        return jsonify(Sentiment(sentiments).getData())
         
     return ""
 
