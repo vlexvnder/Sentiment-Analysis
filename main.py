@@ -30,7 +30,7 @@ def score():
 def finalScore():
     if request.method == "POST":
         text = request.form['content']
-        if(text == session.get('text'):
+        if(text == session.get('text')):
            return session.get('last_response')
         subscription_key = "key"
         endpoint = "endpoint"
