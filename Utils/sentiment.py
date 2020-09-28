@@ -1,7 +1,7 @@
 class Sentiment:
   response = {}
   sentences = {}
-  ConfidenceScores = {}
+  confidenceScores = {}
   sentiment = ""
 
   def __init__(self, response):
