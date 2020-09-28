@@ -2,7 +2,7 @@ from flask import Flask, session, render_template, jsonify, request
 from Analyze import score as score_text
 from base64 import b64decode as b64d
 import requests as r
-from Utils/sentiment import Sentiment
+from Utils.sentiment import Sentiment
 app = Flask(__name__)
 
 app.secret_key = b'_5#y2gyhsghyttryrthgfjkjutrtqtregdfgdL"F4Q8z\n\asdasdasdas]/'
@@ -33,7 +33,7 @@ def finalScore():
     if request.method == "POST":
         text = request.form['content']
         if(text == session.get('text')):
-           return jsonify([session.get('last_response'), {'fromSessionVars':'true'}])
+           return jsonify([Sentiment(session.get('last_response')).getData(), {'fromSessionVars':'true'}])
         subscription_key = "<Key>"
         endpoint = "<EndPoint>"
         sentiment_url = endpoint + "/text/analytics/v3.0/sentiment"
