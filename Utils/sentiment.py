@@ -1,6 +1,7 @@
+
 class Sentiment:
   response = {}
-  sentences = {}
+  sentences = []
   confidenceScores = {}
   sentiment = ""
 
@@ -12,6 +13,17 @@ class Sentiment:
   
   def getSentence(self, n):
     return Sentence(self.sentences[n])
+  
+  def getData(self):
+    sentences = []
+    for s in self.sentences:
+      sentences.append(Sentence(s).getData())
+    
+    return {
+            'rating': self.sentiment,
+            'scores': self.confidenceScores,
+            'sentences': sentences
+        }
 
 class Sentence:
   response = {}
@@ -29,6 +41,14 @@ class Sentence:
     self.text = response['text']
   def __str__(self):
      return str(self.response)
+  
+  def getData(self):
+    return {
+      'sentiment':self.sentiment,
+      'scores':self.confidenceScores,
+      'text':self.text,
+
+    }
 
 
   
