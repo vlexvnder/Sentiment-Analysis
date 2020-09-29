@@ -12,7 +12,7 @@ def index():
     if session.get('text') is None:
         session['text'] = ""
         session['last_response']=""
-    return render_template('home.html')
+    return render_template('index.html')
 
 @app.route('/score', methods=["GET","POST"])
 def score():
