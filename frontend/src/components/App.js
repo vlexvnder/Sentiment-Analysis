@@ -7,7 +7,10 @@ class App extends Component {
     render() { 
         return ( 
             <div>
-                <h1 className="ui center aligned icon header">Sentiment Analysis</h1>
+                <h1 className="ui center aligned icon header">
+                    <i className="smile outline icon" />
+                    Sentiment Analysis
+                </h1>
                 <TextArea />
             </div>
         );
