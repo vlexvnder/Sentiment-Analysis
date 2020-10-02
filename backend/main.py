@@ -33,7 +33,7 @@ def finalScore():
     if request.method == "POST":
         text = request.form['content']
         if(text == session.get('text')):
-           return jsonify([Sentiment(session.get('last_response')).getData(), {'fromSessionVars':'true'}])
+           return jsonify(Sentiment(session.get('last_response')).getData())
         subscription_key = "<Key>"
         endpoint = "<EndPoint>"
         sentiment_url = endpoint + "/text/analytics/v3.0/sentiment"
