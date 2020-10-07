@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ContentEditable from 'react-contenteditable'
 
 import './TextArea.css';
 
@@ -14,13 +15,18 @@ class TextArea extends Component {
         this.textArea.current.focus();
     }
 
-    textAreaChange() {
-        console.log(this.textArea.current.innerHTML)
+    contentEditableChange = event => {
+        this.setState({ textAreaContent: event.target.value });
     }
 
     render() { 
         return (
-            <div ref={this.textArea} className="text-area" placeholder="Just start typing..." dangerouslySetInnerHTML={{__html: this.state.textAreaContent}} onInput={() => this.setState({ textAreaContent: this.textArea.current.innerHTML })} contentEditable></div>
+            <ContentEditable className="text-area"
+                innerRef={this.textArea}
+                html={this.state.textAreaContent}
+                disabled={false}
+                onChange={this.contentEditableChange}
+            />
         );
     }
 }
